@@ -1,12 +1,13 @@
-CREATE TABLE flights (
+CREATE TABLE IF NOT EXISTS flights (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     flight_number VARCHAR(50) NOT NULL,
+    departure VARCHAR(100),
     destination VARCHAR(100),
     departure_time TIMESTAMP,
     price DECIMAL(10,2)
 );
 
-CREATE TABLE seats (
+CREATE TABLE IF NOT EXISTS seats (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     flight_id BIGINT,
     seat_number VARCHAR(10),
@@ -14,7 +15,7 @@ CREATE TABLE seats (
     FOREIGN KEY (flight_id) REFERENCES flights(id)
 );
 
-CREATE TABLE bookings (
+CREATE TABLE IF NOT EXISTS bookings (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     flight_id BIGINT,
     seat_id BIGINT,
@@ -24,7 +25,7 @@ CREATE TABLE bookings (
     FOREIGN KEY (seat_id) REFERENCES seats(id)
 );
 
-CREATE TABLE travelers (
+CREATE TABLE IF NOT EXISTS travelers (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(100),
     email VARCHAR(100)
