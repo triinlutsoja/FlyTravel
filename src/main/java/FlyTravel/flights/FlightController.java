@@ -1,10 +1,14 @@
 package FlyTravel.flights;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -21,6 +25,23 @@ public class FlightController {
     public ResponseEntity<List<Flight>> getAllFlights() {
         List<Flight> flights = flightService.getAllFlights();
         return ResponseEntity.ok(flights);
+    }
+
+    @GetMapping("/filter")
+    public ResponseEntity<List<Flight>> filterFlights(@RequestParam(required = false) String departure,
+                                                      @RequestParam(required = false) String destination,
+                                                      @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy" +
+                                                              "-MM-dd HH:mm:ss") LocalDateTime earliestDepartureTime,
+                                                      @RequestParam(required = false) @DateTimeFormat(pattern = "yyyy" +
+                                                              "-MM-dd HH:mm:ss") LocalDateTime latestDepartureTime,
+                                                      @RequestParam(required = false) BigDecimal minPrice,
+                                                      @RequestParam(required = false) BigDecimal maxPrice,
+                                                      @RequestParam(required = false) String orderBy,  //
+                                                      // departure_time or price
+                                                      @RequestParam(required = false) String sortDir) {  // ASC or DESC
+        List<Flight> filteredFlights = flightService.filterFlights(departure, destination,earliestDepartureTime,
+                latestDepartureTime, minPrice, maxPrice, orderBy, sortDir);
+        return ResponseEntity.ok(filteredFlights);
     }
 
 }

@@ -14,3 +14,15 @@ initializes the database schema with `schema.sql` and populates it with sample d
 
 ### Available endpoints
 - **GET /flights**: Returns a list of available flights.
+- **GET /flights/filter**: Allows users to filter flights based on chosen parameters. Supports filtering by 
+  departure, destination, departure time range, and price range.
+  - Query parameters for /flights/filter:
+    - departure (optional): Filter flights by departure location. 
+    - destination (optional): Filter flights by destination. 
+    - earliestDepartureTime (optional): Lower bound for departure time. Format: yyyy-MM-dd HH:mm:ss. 
+    - latestDepartureTime (optional): Upper bound for departure time. Format: yyyy-MM-dd HH:mm:ss. 
+    - minPrice (optional): Minimum flight price. 
+    - maxPrice (optional): Maximum flight price. 
+    - orderBy (optional): Field to sort by. Allowed values: departure_time, price. 
+    - sortDir (optional): Sort direction. Allowed values: ASC, DESC (default is ASC).
+  - Example request: GET http://localhost:8080/flights/filter?destination=Los%20Angeles&minPrice=100&maxPrice=500&orderBy=price&sortDir=ASC

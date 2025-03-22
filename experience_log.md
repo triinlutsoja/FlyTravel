@@ -2,6 +2,10 @@
 
 In this document I'm going to be taking notes about progress.
 
+### March 22nd
+- I realized that the user might want to use multiple filters at the same time so I need a new approach. I'm going 
+  to build the SQL statement dynamically based on the chosen filters.
+
 ### March 20th
 - Given the time constraint for this assignment I decided to focus on necessary and skip features. 
   - To simplify I'm only going to deal with non-stop direct flights.
