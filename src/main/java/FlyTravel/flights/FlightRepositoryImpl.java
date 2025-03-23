@@ -84,9 +84,6 @@ public class FlightRepositoryImpl implements FlightRepository {
             sql.append(" ORDER BY departure_time ASC");
         }
 
-        System.out.println(sql.toString());
-        System.out.println(params);// Debug
-
         return jdbcTemplate.query(sql.toString(), params.toArray(), (rs, rowNum) -> {
             Flight flight = new Flight();
             flight.setId(rs.getLong("id"));
@@ -106,6 +103,6 @@ public class FlightRepositoryImpl implements FlightRepository {
 
     public List<String> getDistinctDestinations() {
         String sql = "SELECT DISTINCT destination FROM flights";
-        return jdbcTemplate.queryForList(sql, String.class);        
+        return jdbcTemplate.queryForList(sql, String.class);
     }
 }
