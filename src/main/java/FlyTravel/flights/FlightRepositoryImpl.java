@@ -99,15 +99,13 @@ public class FlightRepositoryImpl implements FlightRepository {
         });
     }
 
-    /*
-    @Override
-    public List<Flight> filterByDepartureTime(LocalDateTime earliestTime, LocalDateTime latestTime) {
-        return List.of();
+    public List<String> getDistinctDepartures() {
+        String sql = "SELECT DISTINCT departure FROM flights";
+        return jdbcTemplate.queryForList(sql, String.class);
     }
 
-    @Override
-    public List<Flight> filterByPrice(float lowestPrice, float highestPrice) {
-        return List.of();
+    public List<String> getDistinctDestinations() {
+        String sql = "SELECT DISTINCT destination FROM flights";
+        return jdbcTemplate.queryForList(sql, String.class);        
     }
-    */
 }

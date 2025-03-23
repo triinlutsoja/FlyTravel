@@ -5,6 +5,15 @@ In this document I'm going to be taking notes about progress.
 ### March 22nd
 - I realized that the user might want to use multiple filters at the same time so I need a new approach. I'm going 
   to build the SQL statement dynamically based on the chosen filters.
+- Next I want to create the frontend that allows users to view flights and apply filters. I have less experience 
+  with frontend, mostly self-taught. So I will be consulting with AI and using another project I'm working on as a 
+  template.
+- I'm not exactly sure how to get the frontend to display departure and destination locations in a dropdown list. 
+  I know I need to add new methods and endpoints to the backend for this, but I don't know how it works in the 
+  frontend 
+  yet. 
+  I'm 
+  going to look at some examples of dynamically populated select menus and try to figure it out.
 
 ### March 20th
 - Given the time constraint for this assignment I decided to focus on necessary and skip features. 

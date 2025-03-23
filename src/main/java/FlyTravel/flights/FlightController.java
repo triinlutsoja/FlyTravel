@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/flights")
@@ -44,4 +46,11 @@ public class FlightController {
         return ResponseEntity.ok(filteredFlights);
     }
 
+    @GetMapping("/dropdowns")
+    public ResponseEntity<Map<String, List<String>>> getDropdownData() {
+        Map<String, List<String>> data = new HashMap<>();
+        data.put("departures", flightService.getDistinctDepartures());
+        data.put("destinations", flightService.getDistinctDestinations());
+        return ResponseEntity.ok(data);
+    }
 }

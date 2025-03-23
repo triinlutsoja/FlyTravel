@@ -25,4 +25,12 @@ public class FlightService {
         return flightRepository.filterFlights(departure, destination, earliestDepartureTime, latestDepartureTime,
                 minPrice, maxPrice, orderBy, sortDir);
     }
+
+    public List<String> getDistinctDepartures() {
+       return flightRepository.getDistinctDepartures();
+    }
+
+    public List<String> getDistinctDestinations() {
+        return flightRepository.getDistinctDestinations();
+    }
 }
