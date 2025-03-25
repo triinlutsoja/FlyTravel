@@ -11,6 +11,9 @@ CREATE TABLE IF NOT EXISTS seats (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     flight_id BIGINT,
     seat_number VARCHAR(10),
+    is_window_seat BOOLEAN,
+    near_exit BOOLEAN,
+    extra_legroom BOOLEAN,
     is_booked BOOLEAN DEFAULT false,
     FOREIGN KEY (flight_id) REFERENCES flights(id)
 );

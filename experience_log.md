@@ -2,6 +2,26 @@
 
 In this document I'm going to be taking notes about progress.
 
+### March 25th
+- I changed the schema.sql so that the seats table would include properties. I decided to add one boolean column 
+  for each individual property.
+- I wanted to populate the seats table with sample data but figured it would be very annoying to manually type in 
+  all these lines of SQL (50 flights, each with 60 seats). So I thought I should be able to write a for loop that 
+  generates the SQL for me. So I wrote a Python script.
+
+### March 24th
+- Today I've been planning my next steps which was necessary and time-consuming. I know what needs to get done, but I 
+  need to figure out the most logical order or doing them and setting priorities to respect the time constraint. I pitched all the individual 
+  little tasks and ways how I'd complete them to AI to brainstorm. Here's the rough plan:
+  - Backend: Update the seats table schema to include properties like "more legroom" etc
+  - Backend: Create an endpoint to return the seating plan for a selected flight and add logic to randomly mark
+    seats as booked (non-persistent).
+  - Frontend: Integrate the seating plan UI with backend data to correctly display booked seats.
+  - Frontend: Make sure that the seating plan endpoint returns the correct booking status and layout. 
+  - Frontend: Complete the seating page by adding the header, flight details, and confirmation controls.
+  - Frontend: Suggest seats by filtering them by properties such as "more legroom" etc.  
+  - Backend: Implement functionality to update the seats table when a user confirms their seat selection.
+
 ### March 23rd
 - Managed to make dynamically populated dropdowns work in frontend by asking AI to generate it and letting it 
   explain the code to me line by line. Since I'm less experienced with frontend this is very valuable for me. I 
@@ -11,6 +31,9 @@ In this document I'm going to be taking notes about progress.
 - I also realized that the search results should only include flights that have the desired number of available 
   seats. Currently the search results include all matching flights regardless if there are any available seats. I 
   might have time to address this later.
+- I chose not to reinvent the wheel with the seating plan, so I googled to find some out of the box solution. I 
+  found this: https://codepen.io/priteshchandra/pen/voZdgq. I hope I can make this work in my project to save precious 
+  time and finish the most important features in time.
 
 ### March 22nd
 - I realized that the user might want to use multiple filters at the same time so I need a new approach. I'm going 
