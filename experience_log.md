@@ -2,6 +2,18 @@
 
 In this document I'm going to be taking notes about progress.
 
+### March 26th
+- I realized that for some reason each time I run the app, the database tables get populated with sample data all 
+  over again. There are duplicate entries although each row has a new unique ID. I might have time to fix this later.
+- I'm not quite sure how to solve the requirement of generating the already booked seats randomly. I know I don't 
+  want to overload the database by inserting the random data. So it needs to get done without the database by 
+  manipulating data in the service layer. So I first need to get the data from database, turn it into a list of Seat 
+  objects and then access some of them randomly and mark them as booked. I want the amount of booked seats be random 
+  so the level of occupancy is different each time. I managed this after some tries and then discovered that if a 
+  random index repeats then I might end up with less booked seats than planned. So I used a HashSet to ensure 
+  uniqueness.
+- The endpoint to retrieve seating plan of a flight works!
+
 ### March 25th
 - I changed the schema.sql so that the seats table would include properties. I decided to add one boolean column 
   for each individual property.

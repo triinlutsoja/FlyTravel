@@ -33,6 +33,11 @@ This will start a MySQL container on host port 3308 with a database named `fligh
     - sortDir (optional): Sort direction. Allowed values: ASC, DESC (default is ASC).
   - Example request: GET http://localhost:8080/flights/filter?destination=Los%20Angeles&minPrice=100&maxPrice=500&orderBy=price&sortDir=ASC
 - **GET /flights/dropdowns**: Returns a HashMap with distinct departures and destinations.
+- **GET /seats**: Returns a list of Seat objects for a specific flight. Returned seat table data is manipulated 
+  after the database query, some seats are automatically booked but these demo bookings are not inserted back to the 
+  database table.
+  - Query parameters for /seats:
+    - flightId: The ID of the flight for which to retrieve the seating plan.
 
 
 ### Frontend implementation

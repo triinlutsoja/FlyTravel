@@ -1,5 +1,6 @@
-package FlyTravel.flights;
+package FlyTravel.flights.Repositories;
 
+import FlyTravel.flights.Entities.Flight;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 

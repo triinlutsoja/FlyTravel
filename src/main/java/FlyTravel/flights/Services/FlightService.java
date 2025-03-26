@@ -1,5 +1,7 @@
-package FlyTravel.flights;
+package FlyTravel.flights.Services;
 
+import FlyTravel.flights.Entities.Flight;
+import FlyTravel.flights.Repositories.FlightRepository;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;

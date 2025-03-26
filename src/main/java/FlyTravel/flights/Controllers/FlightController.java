@@ -1,5 +1,7 @@
-package FlyTravel.flights;
+package FlyTravel.flights.Controllers;
 
+import FlyTravel.flights.Entities.Flight;
+import FlyTravel.flights.Services.FlightService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

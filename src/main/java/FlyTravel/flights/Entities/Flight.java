@@ -1,4 +1,4 @@
-package FlyTravel.flights;
+package FlyTravel.flights.Entities;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
