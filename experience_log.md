@@ -2,6 +2,22 @@
 
 In this document I'm going to be taking notes about progress.
 
+### March 27th
+- I didn't know why my database tables get duplicate data each run, but I knew it must be because of Spring Boot, 
+  which implements the data.sql each run all over again. I searched online for solutions, but most results were 
+  tailored to setups using H2, Liquibase, Hibernate, or JPA—technologies that I wasn’t using in my project. Since my 
+  tech stack is based on Spring Boot with MySQL and plain JDBC, I turned to AI for help to find a solution. 
+- Now I need to make the frontend interact with the backend to display booked and available seats for a selected 
+  flight. I'm still trying to make this code I found online work: https://codepen.io/priteshchandra/pen/voZdgq. 
+  Since I'm less experienced in frontend, I consulted with AI to come up with next steps. AI provided me a 
+  Javascript code snippet that fetches the seating plan from the backend and updates the visual seat plan in the 
+  frontend to show which seats are already booked. I asked AI to explain it to me line by line to enhance my 
+  learning. But the code didn't work at first so I added some console.log statements to figure it out. Turns out the 
+  isBooked property was undefined because there was no such property in the JSON retrieved from the database. I 
+  looked at the JSON and was surprised, because it was there. The difference was that it was named "booked" and not 
+  "isBooked". This was very odd to me. I asked AI and this turned out to be something Spring Boot does to adhere to 
+  Java Bean naming conventions.
+
 ### March 26th
 - I realized that for some reason each time I run the app, the database tables get populated with sample data all 
   over again. There are duplicate entries although each row has a new unique ID. I might have time to fix this later.

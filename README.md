@@ -16,7 +16,10 @@ This will start a MySQL container on host port 3308 with a database named `fligh
 - You can run the application directly from your IDE (e.g., IntelliJ IDEA).
 - The app will be available at http://localhost:8080.
 - Running the application automatically initializes the database schema with `schema.sql` and populates it with 
-  sample data from `data.sql`.
+  sample data from `data.sql`. PS! Spring Boot is configured to run the `data.sql` script again each time the 
+  application starts, which results in thousands of rows of duplicate data. In order to avoid that, make sure that 
+  after the first run you set the property `spring.sql.init.mode=always` to `spring.sql.init.mode=never` in application.
+  properties.
 
 ### Available endpoints
 - **GET /flights**: Returns a list of available flights.
@@ -41,18 +44,45 @@ This will start a MySQL container on host port 3308 with a database named `fligh
 
 
 ### Frontend implementation
-The application’s frontend uses plain HTML, CSS, and JavaScript to interact with the backend. It's features include:
-#### Dynamic Dropdowns:
-The search form on `Flights.html` populates the departure and destination dropdown menus dynamically by retrieving 
-distinct values from the backend endpoint /flights/dropdowns.
-#### Form Submission and Date Conversion:
-When the user submits the search form, JavaScript intercepts the submission and constructs a GET request URL to the /flights/filter endpoint. Specifically, if a user selects a departure date, the JavaScript code converts it into a full-day datetime range by appending " 00:00:00" as the start of the day and " 23:59:59" as the end of the day. This allows the backend to filter flights based on the entire day.
-#### Additional Filters:
-The form also allows users to choose the departure location (required) and destination (optional) from dynamically 
+The application’s frontend uses plain HTML, CSS, and JavaScript to interact with the backend.
+
+#### Flights.html
+This is the main page where the user begins to search and filter flights. Its features include:
+
+**Dynamic Dropdowns:** The search form on `Flights.html` populates the departure and destination dropdown menus 
+dynamically by retrieving distinct values from the backend endpoint /flights/dropdowns.
+
+**Form Submission and Date Conversion:** When the user submits the search form, JavaScript intercepts the submission 
+and constructs a GET request URL to the /flights/filter endpoint. Specifically, if a user selects a departure date, the JavaScript code converts it into a full-day datetime range by appending " 00:00:00" as the start of the day and " 23:59:59" as the end of the day. This allows the backend to filter flights based on the entire day.
+
+**Additional Filters:** The form also allows users to choose the departure location (required) and destination 
+(optional) from dynamically 
 generated dropdowns, and specify the number of travelers using +/- buttons. These values are appended as query 
 parameters. Note: the numTravelers parameter is currently not used in backend filtering, it will be implemented 
 later to check for seat availability.
-#### How to Test:
-Navigate to http://localhost:8080/Flights.html in your browser. When the page loads, the dropdowns will be 
-populated automatically. After form submission, the browser is redirected to a URL with the search results (currently in JSON only).
 
+**How to Test:** 
+- Run the Spring Boot application.
+- Navigate to http://localhost:8080/Flights.html in your browser. When the page loads, the dropdowns will be 
+populated automatically. 
+- After form submission, the browser is redirected to a URL with the search results (currently in JSON only).
+
+#### Seating.html
+This page opens after the user has selected a flight from search results and visualizes the plane's layout. This 
+page displays a full seat map for a flight with 60 seats (organized into 10 rows, with 6 seats per row). Its features 
+include:
+
+**Visual layout:** The HTML and CSS render a realistic airplane seating plan, with designated areas for the cockpit, 
+exits, and cabin. The code for this is not an original, is borrowed from the internet: https://codepen.io/priteshchandra/pen/voZdgq .
+
+**Interactive integration:** The accompanying JavaScript (seating.js) fetches the seating plan data from the backend (for a hardcoded flightId initially) and dynamically updates the UI. Booked seats are automatically marked as “Occupied” (via disabling the corresponding checkboxes and updating labels).
+
+**Future enhancements:** 
+- Flight selection will later not be hardcoded, but will use the user's exact choice of flight.
+- Additional UI features such as seat recommendations will be implemented later.
+
+**Testing:** To test the seating plan page:
+- Run the Spring Boot application.
+- Navigate to http://localhost:8080/Seating.html.
+- Open the browser's Developer Console (F12) to verify that the Javascript successfully fetches seat data adn 
+  updates the visible seating plan.

@@ -4,10 +4,10 @@ public class Seat {
     private Long id;
     private Long flightId;
     private String seatNumber;
-    private boolean isWindowSeat;
+    private boolean isWindowSeat;  // PS! Spring Boot will turn this to "windowSeat" in JSON
     private boolean extraLegroom;
     private boolean nearExit;
-    private boolean isBooked;
+    private boolean isBooked;  // PS! Spring Boot will turn this to "booked" in JSON
 
     public Seat() {}
 
