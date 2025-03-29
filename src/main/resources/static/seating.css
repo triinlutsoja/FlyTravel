@@ -1,3 +1,22 @@
+header {
+  background-color: #ffffff;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+}
+header img {
+  height: 50px;
+}
+nav {
+  margin-left: auto;
+}
+nav a {
+  color: black;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
 /* The following code is taken from the internet: https://codepen.io/priteshchandra/pen/voZdgq */
 
 *,*:before,*:after {

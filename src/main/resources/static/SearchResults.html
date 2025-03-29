@@ -1,0 +1,80 @@
+<!-- Note: I managed to figure out about 25% of the HTML and 50% of the CSS myself, rest of the credit goes to AI. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results – FlyTravel</title>
+    <style>
+      /* Header styling */
+      header {
+        background-color: #ffffff;
+        color: white;
+        padding: 10px 20px;
+        display: flex;
+        align-items: center;
+      }
+      header img {
+        height: 50px;
+      }
+      nav {
+        margin-left: auto;
+      }
+      nav a {
+        color: black;
+        margin-left: 20px;
+        text-decoration: none;
+      }
+
+      /* Container and flight card styling */
+      .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 10px;
+      }
+      .flight-card {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 10px;
+      }
+      flight-card h2 {
+      margin: 0;
+      font-size: 18px;
+      }
+      .flight-card p {
+      margin: 5px 0;
+      }
+      .flight-card.selected {
+      border: 2px solid blue;
+      background-color: #e0f0ff;
+      }
+
+      /* Button styling */
+      #continue-button {
+          width: 70px;
+          height: 30px;
+      }
+    </style>
+</head>
+<body>
+  <header>
+    <img src="FlyTravel.png" alt="FlyTravel Logo">
+    <nav>
+      <a href="about.html">About us</a>
+      <a href="Flights.html">Flights</a>
+    </nav>
+  </header>
+  <div class="container">
+    <h1>Search Results</h1>
+    <form id="flightSelectionForm" action="/seats" method="get">
+      <ol id="flightResults">
+        <!-- Flight cards will be dynamically injected here by Javascript-->
+      </ol>
+      <!-- Hidden input to store the selected flight -->
+      <input type="hidden" name="flightId" id="selectedFlightId" value="">
+      <button type="submit" id="continue-button">Continue</button>
+    </form>
+  </div>
+  <script src="searchResults.js"></script>
+</body>
+</html>

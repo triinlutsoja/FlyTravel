@@ -2,11 +2,12 @@
 
 // Fetch the seating plan data from backend and update the checkboxes to show which seats are booked
 document.addEventListener("DOMContentLoaded", () => {
-    // For starters, I'll assume the flightId is 1.
-    const flightId = 1;  
 
-    // For debugging only
-    console.log("Fetching seating plan for flightId:", flightId);
+    const paramsString = window.location.search;  // returns query parameters after the '?' from URL
+    console.log(`This is the paramsString: ${paramsString}`)  // For debugging only
+    const searchParams = new URLSearchParams(paramsString);
+    const flightId = searchParams.get("flightId");  
+    console.log("Fetching seating plan for flightId:", flightId); // For debugging only
 
     // Fetch the seating plan data from the backend
     fetch(`/seats?flightId=${flightId}`)

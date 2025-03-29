@@ -50,38 +50,38 @@ increaseBtn.addEventListener("click", () => {
 
 // Form submission with date conversion
 document.querySelector('form').addEventListener('submit', function (e) {
-e.preventDefault();  // Prevent default form submission behavior
+  e.preventDefault();  // Prevent default form submission behavior
 
-// Get the selected form values
-const departure = document.getElementById('departure').value;
-const destination = document.getElementById('destination').value;
-const departureDate = document.getElementById('departureDate').value;
-const numTravelers = document.getElementById('numTravelers').value;
+  // Get the selected form values
+  const departure = document.getElementById('departure').value;
+  const destination = document.getElementById('destination').value;
+  const departureDate = document.getElementById('departureDate').value;
+  const numTravelers = document.getElementById('numTravelers').value;
 
-if (departureDate) {
-  // Build the datetime range strings
-  const earliestDepartureTime = departureDate + " 00:00:00";
-  const latestDepartureTime = departureDate + " 23:59:59";
+  if (departureDate) {
+    // Build the datetime range strings
+    const earliestDepartureTime = departureDate + " 00:00:00";
+    const latestDepartureTime = departureDate + " 23:59:59";
 
-  // Construct dynamic URL with these parameters
-  let url = new URL(window.location.origin + "/flights/filter");
-  url.searchParams.append("earliestDepartureTime", earliestDepartureTime);
-  url.searchParams.append("latestDepartureTime", latestDepartureTime);
+    // Construct dynamic URL with these parameters
+    let url = new URL(window.location.origin + "/SearchResults.html");
+    url.searchParams.append("earliestDepartureTime", earliestDepartureTime);
+    url.searchParams.append("latestDepartureTime", latestDepartureTime);
 
-  if (departure) {
-    url.searchParams.append("departure", departure);
+    if (departure) {
+      url.searchParams.append("departure", departure);
+    }
+    if (destination) {
+      url.searchParams.append("destination", destination);
+    }
+    if (numTravelers) {
+      url.searchParams.append("numTravelers", numTravelers);
+    }
+
+    // Redirect to the constructed URL
+    window.location.href = url.toString();
+  } else {
+    // Fallback
+    this.submit();
   }
-  if (destination) {
-    url.searchParams.append("destination", destination);
-  }
-  if (numTravelers) {
-    url.searchParams.append("numTravelers", numTravelers);
-  }
-
-  // Redirect to the constructed URL
-  window.location.href = url.toString();
-} else {
-  // Fallback
-  this.submit();
-}
 });

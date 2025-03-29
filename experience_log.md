@@ -2,6 +2,18 @@
 
 In this document I'm going to be taking notes about progress.
 
+### March 29th
+- I needed to create the search results page's Javascript code to request data from backend, but I didn't know how to 
+  access the user-selected filters, so I googled and found this: https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams. I didn't end up using it as it 
+  was presented, but it gave me the idea of `window.location.search`. After accessing the string I was able to simply 
+  append it to the fetch. I'm so much more confident with Javascript!
+- I was able to figure out about 30% of searchResults.js by looking at the other JS files, comparing with HTML files.
+  I pitched my 30% to AI, asked for feedback, improvements and solutions.
+- I improved seating.js so the flightId would get dynamically fetched. Here the code samples from https://developer.
+  mozilla.org/en-US/docs/Web/API/URLSearchParams became valuable when extracting the flight id.
+- With the help of AI I added some CSS for visual action when selecting a flight on the search results page. Now the 
+  flight card turns blue when you select the flight.
+
 ### March 27th
 - I didn't know why my database tables get duplicate data each run, but I knew it must be because of Spring Boot, 
   which implements the data.sql each run all over again. I searched online for solutions, but most results were 
@@ -17,6 +29,10 @@ In this document I'm going to be taking notes about progress.
   looked at the JSON and was surprised, because it was there. The difference was that it was named "booked" and not 
   "isBooked". This was very odd to me. I asked AI and this turned out to be something Spring Boot does to adhere to 
   Java Bean naming conventions.
+- I created the SearchResults.html page. After having created two other HTMLs I felt more confident in creating one, 
+  so I tried to write it myself this time. I thing I was able to write about 25% before I needed to get some help 
+  from AI. I was able to copy and paste about half of the CSS from the other CSS examples in this code and modify 
+  them independently.
 
 ### March 26th
 - I realized that for some reason each time I run the app, the database tables get populated with sample data all 
