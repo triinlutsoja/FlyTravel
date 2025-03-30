@@ -80,6 +80,35 @@ to learn about HTML and CSS, fixed mistakes, and tested it. -->
           font-size: 16px;
           cursor: pointer;
         }
+
+        /* Container and flight card styling */
+      .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 10px;
+      }
+      .flight-card {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 10px;
+      }
+      flight-card h2 {
+      margin: 0;
+      font-size: 18px;
+      }
+      .flight-card p {
+      margin: 5px 0;
+      }
+      .flight-card.selected {
+      border: 2px solid blue;
+      background-color: #e0f0ff;
+      }
+
+      /* Button styling */
+      #continue-button {
+          width: 70px;
+          height: 30px;
+      }
     </style>
 </head>
 <body>
@@ -123,6 +152,16 @@ to learn about HTML and CSS, fixed mistakes, and tested it. -->
                 <button type="submit" class="search-button">Search</button>
             </form>
         </div>
+        <!-- Note: In order to display the whole flight plan on the main page I was able to reuse code from SearchResults.html without consulting AI. -->
+        <h1>All Flights</h1>
+        <form id="flightSelectionForm" action="/seats" method="get">
+            <ol id="flightResults">
+              <!-- Flight cards will be dynamically injected here by JavaScript -->
+            </ol>
+            <!-- Hidden input to store the selected flight -->
+            <input type="hidden" name="flightId" id="selectedFlightId" value="">
+            <button type="submit" id="continue-button">Continue</button>
+        </form>
     </div>
     <script src="flights_script.js" defer></script>
 </body>

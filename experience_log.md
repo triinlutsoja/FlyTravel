@@ -1,6 +1,42 @@
 ## Experience log
 
-In this document I'm going to be taking notes about progress.
+In this document I'm going to be taking notes about progress. The entries are in descending order.
+
+### SUMMARY
+I absolutely loved working on this project! I applied to CGI's summer internship last year as well but didn't have 
+the skills back then to even start the assignment. This project at hand is a testament to how much I have learned in 
+the past 12 months because I was able to do this! 
+
+The backend part was rather easy for me because that's what I've been trained for. The frontend part however was 
+truly a wonderful learning opportunity! Although Javascript feels very similar to Java, I'm still a newbie when it 
+comes to HTML, CSS and making all three work together. I asked AI's help a lot with frontend but I never just 
+copy-pasted its suggestions – I always write it through character by character to understand the code, and then I 
+always ask AI to explain that code to me line by line until I understand everything what's written. It makes me 
+incredibly proud that towards the end of my time with this project I had built more and more confidence, so I found myself wanting to figure frontend out by myself without consulting AI. 
+This has been a real confidence booster!
+
+Since I'm working full time (non-tech field, non-tech position), I was able to work on this application before and 
+after work and on weekends. I managed to put 32 hours into this project. I didn't get to finish everything I would 
+have wanted to do, so here's a to-do list for the future with some initial ideas how I would approach them.
+
+**TO-DO LIST for the future**
+- Currently the endpoint GET /flights/filter returns all flights that match selected filters but that doesn't mean that 
+  these flights still have seats available. So this endpoint needs to be improved to take the number of travelers into
+  consideration and find flights where all travelers can find an available seat. To fix this I'd need to adjust the 
+  endpoint and the corresponding method on the service and repository layer to accept the number of travelers as a 
+  request parameter. There is a slight problem, though. Since the randomly booked seats are currently created on the 
+  service layer (non-persistent), the database knows nothing about them and therefore the frontend will still 
+  retrieve search results that have not yet been manipulated with booked seats. So maybe one way to approach this is 
+  to request seat plans for all search results, manipulate that data by marking some seats as "booked" and somehow 
+  not even display the flight that doesn't have enough available seats among the search results.
+- The main page `Flights.html` could have even more filtering options (price, flight duration etc). This is quite 
+  easy to do, because it's possible to reuse code and just update important variables here and there! I'd have to 
+  update the `schema.sql` and `data.sql` if I'd like to add a column for flight duration and have some sample data 
+  available. 
+- In case there are no suitable flights, then the `SearchResults.html` should display a friendly message so that the 
+  user knows that everything is okay – the website works fine, but there just were no results for these filters. I 
+  would probably add an alert with a message in the `searchResults.js` when the backend request returns empty.
+
 
 ### March 30th
 - Today I started to develop the "suggested seat" functionality. I have heard that in real life plane seats are 
@@ -29,7 +65,10 @@ In this document I'm going to be taking notes about progress.
   their checkbox status to "checked". Again I'm so proud that as a beginner at frontend I was able to write this 
   part on my own and without consulting of AI.
 - I needed AI's help with limiting how many seats the user is allowed to select on Seating.html. It took a lot of 
-  time to make that code work but eventually I was able to turn it into what I had in mind.
+  time to make that code work, but eventually I was able to turn it into what I had in mind.
+- I read through the assignment again and added a new section to `Flights.html` to display all available flights. 
+  This time I was able to do this without the help of AI because I just reused code from `SearchResults.html` and 
+  `searchResults.js`. I only needed to use a different backend endpoint.
 
 ### March 29th
 - I needed to create the search results page's Javascript code to request data from backend, but I didn't know how to 

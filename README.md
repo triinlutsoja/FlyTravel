@@ -1,4 +1,7 @@
 # Introduction
+
+Dear reviewer! If you want to follow along with how I worked, please see `experience_log.md`!
+
 I’ve built this project using my own ideas and experience — I’m pretty confident with the backend since I’ve done it 
 a lot before. For the frontend, which is newer to me, I looked at online resources and asked help from an AI assistant 
 to confirm that my approach was on the right track. I took those ideas and mixed them with my own work, so what you see here is a blend of guidance from trusted sources and my personal contributions.
@@ -51,7 +54,8 @@ This will start a MySQL container on host port 3308 with a database named `fligh
 The application’s frontend uses plain HTML, CSS, and JavaScript to interact with the backend.
 
 #### Flights.html
-This is the main page where the user begins to search and filter flights. Its features include:
+This is the main page where the user can see all available flights and is also able to search and filter flights. 
+Its features include:
 
 **Dynamic Dropdowns:** The search form on `Flights.html` populates the departure and destination dropdown menus 
 dynamically by retrieving distinct values from the backend endpoint /flights/dropdowns.
@@ -63,6 +67,9 @@ and constructs a GET request URL to the /flights/filter endpoint. Specifically, 
 (optional) from dynamically generated dropdowns, and specify the number of travelers using +/- buttons. These values are appended as query 
 parameters.
 
+**Flight cards:** The user can also just scroll through all available flights, select one and click on the 
+"Continue" button to proceed to select seats on `Seating.html`.
+
 **Future enhancements:**
 - Add more filters such as filtering by price, flight duration etc.
 
@@ -70,8 +77,12 @@ parameters.
 - Run the Spring Boot application.
 - Navigate to http://localhost:8080/Flights.html in your browser. When the page loads, the dropdowns will be 
 populated automatically. 
-- Select any filters and click on the "Search" button.
-- After form submission, the browser is redirected to SearchResults.html.
+- Option 1:
+  - Select any filters and click on the "Search" button.
+  - After form submission, the browser is redirected to SearchResults.html.
+- Option 1: 
+  - Select one flight from the "All flights" section, click on the "Continue" button at the bottom
+  - After form submission, the browser is redirected to Seating.html.
 
 #### SearchResults.html
 This page displays all flights retrieved form the database that match user-selected filters as flight cards. 
