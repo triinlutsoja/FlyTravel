@@ -97,14 +97,20 @@ include:
 **Visual layout:** The HTML and CSS render a realistic airplane seating plan, with designated areas for the cockpit, 
 exits, and cabin. The code for this is not an original, is borrowed from the internet: https://codepen.io/priteshchandra/pen/voZdgq .
 
-**Interactive integration:** The accompanying JavaScript (seating.js) fetches the seating plan data from the backend (for a hardcoded flightId initially) and dynamically updates the UI. Booked seats are automatically marked as “Occupied” (via disabling the corresponding checkboxes and updating labels).
+**Interactive integration:** The accompanying JavaScript (seating.js) fetches the seating plan data from the backend 
+(for a hardcoded flightId initially) and dynamically updates the UI. Booked seats are automatically marked as 
+“Occupied” (via disabling the corresponding checkboxes and updating labels). One seat is randomly suggested 
+(pre-selected).
 
 **Future enhancements:**
-- Additional UI features such as seat recommendations will be implemented later.
+- Align the number of travelers and number of suggested seats.
+- Force the user to select exactly x seats, x being the number of travelers.
+- Add a continue button to proceed to checkout.
+- Display the chosen flight's details.
 
 **How to test** 
 To test the seating plan page:
 - Run the Spring Boot application.
 - Navigate to http://localhost:8080/Seating.html.
-- Open the browser's Developer Console (F12) to verify that the Javascript successfully fetches seat data and 
-  updates the visible seating plan.
+- Open the browser's Developer Console (F12) to verify that the Javascript successfully fetches seat data, updates 
+  the visible seating plan, and randomly suggests one available seat.

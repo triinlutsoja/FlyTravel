@@ -54,6 +54,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 }
             });
+
+            // Randomly suggest available seats
+            const availableSeats = data.filter(seat => !seat.booked);  // filter out the available seats
+            const randomIndex = Math.floor(Math.random() * availableSeats.length);  // Randomly choose the index (https://www.geeksforgeeks.org/how-to-select-a-random-element-from-array-in-javascript/)
+            const suggestedSeat = availableSeats[randomIndex].seatNumber;  // access the ranodm seat in availableSeats
+
+            console.log(`The randomly chosen index is: ${randomIndex}. It corresponds to the seat ${suggestedSeat}.`)
+
+            const seat = document.getElementById(suggestedSeat);
+            
+            const checkbox = document.getElementById(suggestedSeat);
+            checkbox.checked = true;
+
+            // For debugging only
+            console.log(`Seat ${suggestedSeat} marked as checked`);
+
         })
         .catch(error => {
             console.error("Error fetching seat data:", error);

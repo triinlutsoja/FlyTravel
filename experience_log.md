@@ -2,6 +2,27 @@
 
 In this document I'm going to be taking notes about progress.
 
+### March 30th
+- Today I started to develop the "suggested seat" functionality. I have heard that in real life plane seats are 
+  filled in some specific order so that the plane is not out of balance. Unfortunately I'm not an expert in that 
+  field, so I will not be taking that into consideration in my project. The booked seats were already created 
+  randomly (just as written in the assignment), so the seat suggestion will also be random.
+- I have a slight problem with the assignment. I understand that the requirement is that the user should be able to 
+  filter the seats based on specific properties (window seat, extra legroom, near exit etc). But I realized 
+  this is redundant because if I'd create a filtering feature it's more inconvenient for the user. It's way more 
+  intuitive to just click on the seat plan to choose where you want to sit. This way the user needs to make less 
+  clicks as well, and that is useful in the checkout process (less dropout). So I'm not going to be creating filters.
+- The right place for the code of the "suggested seat" functionality is inside seating.js. First I need to fetch 
+  seat plan from backend, filter out booked seats and choose randomly form the available ones. Then I need to be 
+  able to change the seat's checkbox form unchecked to checked.
+- I'm so proud that I wrote the Javascript code for the "suggested seat" functionality myself! I was able to figure 
+  it out on my own, I just googled how to choose a random element form array. I'm truly gaining confidence with 
+  frontend!
+- I changed the colours on the CSS so that available seats would be green and the suggested/selected seats would be 
+  blue.
+- Now I need to make sure that the user is only able to select the exact number of seats what they chose on Flights.
+  html as number of travelers.
+
 ### March 29th
 - I needed to create the search results page's Javascript code to request data from backend, but I didn't know how to 
   access the user-selected filters, so I googled and found this: https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams. I didn't end up using it as it 
