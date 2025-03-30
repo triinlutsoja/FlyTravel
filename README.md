@@ -38,10 +38,13 @@ This will start a MySQL container on host port 3308 with a database named `fligh
     - maxPrice (optional): Maximum flight price. 
     - orderBy (optional): Field to sort by. Allowed values: departure_time, price. 
     - sortDir (optional): Sort direction. Allowed values: ASC, DESC (default is ASC).
-  - Note: Although the frontend only lets the user select a single date, that date is automatically converted into a full-day range—from “00:00:00” to “23:59:59”—so that all flights departing on that day are returned.
-  - Note: Currently the endpoint returns all flights that match these filters but that doesn't mean that these 
+  - NOTE: Although the frontend only lets the user select a single date, that date is automatically converted into a 
+    full-day range—from “00:00:00” to “23:59:59”—so that all flights departing on that day are returned.
+  - NOTE: Currently the endpoint returns all flights that match these filters but that doesn't mean that these 
     flights still have seats available. So this endpoint needs to be improved to take the number of travelers into 
     consideration and find flights where all travelers can find an available seat.
+  - NOTE: This endpoint is vulnerable to SQL injection attacks. Since security issues are beyond the scope of this 
+    assignment, I didn't spend extra time to address it.
 - **GET /flights/dropdowns**: Returns a HashMap with distinct departures and destinations.
 - **GET /seats**: Returns a list of Seat objects for a specific flight. Returned seat table data is manipulated 
   after the database query, some seats are automatically randomly booked but these demo bookings are not inserted 
