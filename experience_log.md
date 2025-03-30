@@ -6,7 +6,9 @@ In this document I'm going to be taking notes about progress.
 - Today I started to develop the "suggested seat" functionality. I have heard that in real life plane seats are 
   filled in some specific order so that the plane is not out of balance. Unfortunately I'm not an expert in that 
   field, so I will not be taking that into consideration in my project. The booked seats were already created 
-  randomly (just as written in the assignment), so the seat suggestion will also be random.
+  randomly (just as written in the assignment), and no weight balance considerations were made. So the seat suggestion 
+  will also be random, the user can either accept the suggestions or just click on more suitable seats to select 
+  something else.
 - I have a slight problem with the assignment. I understand that the requirement is that the user should be able to 
   filter the seats based on specific properties (window seat, extra legroom, near exit etc). But I realized 
   this is redundant because if I'd create a filtering feature it's more inconvenient for the user. It's way more 
@@ -22,6 +24,12 @@ In this document I'm going to be taking notes about progress.
   blue.
 - Now I need to make sure that the user is only able to select the exact number of seats what they chose on Flights.
   html as number of travelers.
+- I needed to google what the equivalent of a Java HashSet is on JavaScript – it's a Set(). I also needed to find 
+  out how to iterate over the Set's elements. This way I was able to randomly choose unique suggested seats and change 
+  their checkbox status to "checked". Again I'm so proud that as a beginner at frontend I was able to write this 
+  part on my own and without consulting of AI.
+- I needed AI's help with limiting how many seats the user is allowed to select on Seating.html. It took a lot of 
+  time to make that code work but eventually I was able to turn it into what I had in mind.
 
 ### March 29th
 - I needed to create the search results page's Javascript code to request data from backend, but I didn't know how to 

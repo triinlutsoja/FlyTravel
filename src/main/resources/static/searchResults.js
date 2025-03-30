@@ -49,10 +49,15 @@ window.addEventListener("DOMContentLoaded", () => {
     // Before form submission make sure that exactly one flight is selected
     document.getElementById("flightSelectionForm").addEventListener("submit", function (e) {
         e.preventDefault();  // Prevent default form submission behavior
+        
+        const searchParams = new URLSearchParams(paramsString);
+        const numTravelers = searchParams.get("numTravelers");
+        
         const flightId = document.getElementById("selectedFlightId").value;
         if (flightId) {
             let url = new URL(window.location.origin + "/Seating.html");
             url.searchParams.append("flightId", flightId);
+            url.searchParams.append("numTravelers", numTravelers);
 
             // Redirect to the constructed URL
             window.location.href = url.toString();
