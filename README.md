@@ -32,8 +32,8 @@ This will start a MySQL container on host port 3308 with a database named `fligh
   - Query parameters for /flights/filter:
     - departure: Filter flights by departure location. 
     - destination (optional): Filter flights by destination. 
-    - earliestDepartureTime (optional): Lower bound for departure time. Format: yyyy-MM-dd HH:mm:ss. 
-    - latestDepartureTime (optional): Upper bound for departure time. Format: yyyy-MM-dd HH:mm:ss. 
+    - earliestDepartureTime: Lower bound for departure time. Format: yyyy-MM-dd HH:mm:ss. 
+    - latestDepartureTime: Upper bound for departure time. Format: yyyy-MM-dd HH:mm:ss. 
     - minPrice (optional): Minimum flight price. 
     - maxPrice (optional): Maximum flight price. 
     - orderBy (optional): Field to sort by. Allowed values: departure_time, price. 
@@ -64,8 +64,8 @@ dynamically by retrieving distinct values from the backend endpoint /flights/dro
 and constructs a GET request URL to the /flights/filter endpoint. Specifically, if a user selects a departure date, the JavaScript code converts it into a full-day datetime range by appending " 00:00:00" as the start of the day and " 23:59:59" as the end of the day. This allows the backend to filter flights based on the entire day.
 
 **Additional Filters:** The form allows users to choose the departure location (required) and destination 
-(optional) from dynamically generated dropdowns, and specify the number of travelers using +/- buttons. These values are appended as query 
-parameters.
+(optional) from dynamically generated dropdowns, and specify the number of travelers using +/- buttons. The 
+departure date is mandatory. These values are appended as query parameters.
 
 **Flight cards:** The user can also just scroll through all available flights, select one and click on the 
 "Continue" button to proceed to select seats on `Seating.html`.
@@ -78,7 +78,8 @@ parameters.
 - Navigate to http://localhost:8080/Flights.html in your browser. When the page loads, the dropdowns will be 
 populated automatically. 
 - Option 1:
-  - Select any filters and click on the "Search" button.
+  - Select any filters and click on the "Search" button. PS! The departure date of the sample flights ranges form 
+    April 1st to April 5th 2025.
   - After form submission, the browser is redirected to SearchResults.html.
 - Option 1: 
   - Select one flight from the "All flights" section, click on the "Continue" button at the bottom
@@ -124,7 +125,7 @@ displayed and further selection of extra seats is restricted.
 **How to test** 
 To test the seating plan page:
 - Run the Spring Boot application.
-- Navigate to http://localhost:8080/Seating.html.
+- Navigate to http://localhost:8080/Seating.html?flightId=13&numTravelers=3 (just an example)
 - After the page is loaded you are able to see that booked seats are marked with an "X", available seats are green 
   and suggested seats are highlighted with blue.
 - If you don't like the suggested seats, unselect an already selected (highlighted) seat and select another one.
